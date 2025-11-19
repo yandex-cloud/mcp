@@ -1,0 +1,5 @@
+.arcignore
+
+.idea
+.DS_Store
+.claude

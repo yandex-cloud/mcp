@@ -114,6 +114,6 @@ Yandex Search MCP Server currently consists of two tools listed below:
   </tr>
   <tr>
     <td> search_generative </td>
-    <td> Searches via Yandex Search API using generative search with "chat completion" query format (user to assistant dialogue) </td>
+    <td> Searches via Yandex Search API using generative search with "chat completion" query format (user's conversation with assistant) </td>
   </tr>
 </table>

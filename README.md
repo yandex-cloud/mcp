@@ -132,7 +132,7 @@ You can get the token using [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/
 
 > The issue is that IAM token has a maximum lifespan of **12 hours**. After expiration, the token must be manually recreated.
 
-In the near future, we'll create the small local authorization client that runs using `uvx` or `npx` for more convenient authorization via WebAuthn.
+In the near future, we'll implement authorization for MCP servers using [OAuth 2.1](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization).
 
 ## License
 

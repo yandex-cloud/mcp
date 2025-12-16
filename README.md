@@ -46,6 +46,7 @@ Using provided MCP servers, you can manage Yandex Cloud infrastructure either fo
 | [🛠️ Toolkit MCP Server](./servers/toolkit-mcp-server/README.md)    | Lightweight MCP server to deploy simple applications in Yandex Cloud with Compute, VPC, IAM, Storage (S3) and Managed YDB | [Install](./servers/toolkit-mcp-server/README.md#prerequisites) |
 | [📚 Documentation MCP Server](./servers/documentation-mcp-server/README.md) | Real-time free access to official Yandex Cloud documentation using generative search | [Install](./servers/documentation-mcp-server/README.md#prerequisites) |
 | [🔍 Yandex Search MCP Server](./servers/search-mcp-server/README.md) | Web search using Yandex Search: both generative and classic | [Install](./servers/search-mcp-server/README.md#prerequisites) |
+| [🕵️‍♂️ Data Catalog Consumer MCP Server](./servers/datacatalog-consumer-mcp-server/README.md) | Searching tables, views, queries and viewing dependency graphs in a centralized organization metadata repository | [Install](./servers/datacatalog-consumer-mcp-server/README.md#prerequisites) |
 
 ### Configuration
 

@@ -1,0 +1,173 @@
+# Yandex Cloud Serverless Workflows MCP Server (Preview)
+
+> The server is running in preview mode, some features may be unstable
+
+MCP server for managing Yandex Cloud Serverless Workflows - create, configure, and manage workflows with YAML specifications, executions, scheduling, and access control.
+
+## Use Cases
+
+Prompts examples:
+
+- List all workflows in my folder
+- Create a new workflow with YAML specification
+- Start workflow execution with input data
+- Get workflow execution status and history
+- Stop or terminate running execution
+- Update workflow specification
+- Configure workflow scheduling with cron expression
+- Manage access bindings for workflows
+
+## Installation and Usage
+
+### Prerequisites
+
+#### Authorization
+
+- User account authorization
+
+  1. User account must have all [roles](https://yandex.cloud/en/docs/serverless-integrations/security/workflows) needed for your tasks (e.g. `editor` or `serverless.workflows.admin`);
+
+  2. [Install](https://yandex.cloud/en/docs/cli/quickstart) Yandex Cloud CLI;
+
+  3. Get IAM token with `yc iam create-token` CLI command.
+
+      Then valid authorization header will be `Authorization: Bearer <IAM token>`.
+
+      > Note that token has a maximum lifespan of **12 hours**. After expiration, it must be recreated.
+
+- [Service account](https://yandex.cloud/en/docs/iam/concepts/users/service-accounts) authorization
+
+  1. [Create](https://yandex.cloud/en/docs/iam/operations/sa/create) a service account you will use to send requests.
+
+  2. [Assign](https://yandex.cloud/en/docs/iam/operations/sa/assign-role-for-sa#binding-role-resource) all [roles](https://yandex.cloud/en/docs/serverless-integrations/security/workflows) needed for your tasks (e.g. `serverless.workflows.editor`) to the service account you created.
+
+  3. There are different authorization options, depending on the environment you will call MCP server from:
+
+      1. Local usage
+
+          1. [Install](https://yandex.cloud/en/docs/cli/quickstart) Yandex Cloud CLI;
+
+          2. Get service account's IAM token with `yc iam create-token --impersonate-service-account-id <service-account-id>` CLI command.
+
+          Then valid authorization header will be `Authorization: Bearer <IAM token>`.
+
+          > Note that token has a maximum lifespan of **12 hours**. After expiration, it must be recreated.
+
+      2. Yandex Cloud Compute Instance (Virtual Machine)
+
+          Use the [Metadata service](https://yandex.cloud/en/docs/security/standard/authentication#service-accounts) by assigning the service account to the VM.
+
+### Configuration
+
+To start working with Yandex Cloud Serverless Workflows MCP Server, you have to update your assistant's configuration (e.g. Cline, Roo Code or Claude Desktop) by adding `yandex-cloud-workflows` server.
+
+There are two available ways:
+
+1. Directly via streamable http
+
+```json
+{
+  "mcpServers": {
+    "yandex-cloud-workflows": {
+      "type": "streamableHttp",
+      "url": "https://workflows.mcp.cloud.yandex.net/mcp",
+      "headers": {
+        "Authorization": "Bearer <YC IAM Token>"
+      }
+    }
+  }
+}
+```
+
+2. Using stdio with `npx mcp-remote` client
+
+```json
+{
+  "mcpServers": {
+    "yandex-cloud-workflows": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://workflows.mcp.cloud.yandex.net/mcp",
+        "--header", "Authorization:Bearer <YC IAM Token>"
+      ]
+    }
+  }
+}
+```
+
+For the second option you also need `npx` to be installed.
+
+### Tools
+
+Yandex Cloud Serverless Workflows MCP Server currently consists of 16 tools listed below:
+
+<table>
+  <tr>
+    <th> Tool </th>
+    <th> Description </th>
+  </tr>
+
+  <tr>
+    <td> workflow_get </td>
+    <td> Get Yandex Cloud Serverless Workflow </td>
+  </tr>
+  <tr>
+    <td> workflows_list </td>
+    <td> List Yandex Cloud Serverless Workflows in the folder </td>
+  </tr>
+  <tr>
+    <td> workflow_create </td>
+    <td> Create Yandex Cloud Serverless Workflow </td>
+  </tr>
+  <tr>
+    <td> workflow_update </td>
+    <td> Update Yandex Cloud Serverless Workflow </td>
+  </tr>
+  <tr>
+    <td> workflow_delete </td>
+    <td> Delete Yandex Cloud Serverless Workflow </td>
+  </tr>
+  <tr>
+    <td> workflow_operations_list </td>
+    <td> List Yandex Cloud Serverless Workflow operations </td>
+  </tr>
+  <tr>
+    <td> workflow_access_set </td>
+    <td> Set access bindings for Yandex Cloud Serverless Workflow </td>
+  </tr>
+  <tr>
+    <td> workflow_accesses_list </td>
+    <td> List access bindings for Yandex Cloud Serverless Workflow </td>
+  </tr>
+  <tr>
+    <td> workflow_accesses_update </td>
+    <td> Update access bindings for Yandex Cloud Serverless Workflow </td>
+  </tr>
+  <tr>
+    <td> workflow_execution_get </td>
+    <td> Get Yandex Cloud Serverless Workflow execution </td>
+  </tr>
+  <tr>
+    <td> workflow_execution_list </td>
+    <td> List Yandex Cloud Serverless Workflow execution </td>
+  </tr>
+  <tr>
+    <td> workflow_execution_start </td>
+    <td> Start Yandex Cloud Serverless Workflow execution </td>
+  </tr>
+  <tr>
+    <td> workflow_execution_stop </td>
+    <td> Stop Yandex Cloud Serverless Workflow execution </td>
+  </tr>
+  <tr>
+    <td> workflow_execution_terminate </td>
+    <td> Terminate Yandex Cloud Serverless Workflow execution </td>
+  </tr>
+  <tr>
+    <td> workflow_execution_history_get </td>
+    <td> Get Yandex Cloud Serverless Workflow execution history </td>
+  </tr>
+</table>

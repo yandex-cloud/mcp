@@ -22,7 +22,7 @@ Prompts examples:
 
 - User account authorization
 
-  1. User account must have all needed roles (e.g. `compute.editor`);
+  1. User account must have all roles needed for your tasks (e.g. `editor` or `compute.admin`);
 
   2. [Install](https://yandex.cloud/en/docs/cli/quickstart) Yandex Cloud CLI;
 

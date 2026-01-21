@@ -25,7 +25,7 @@ Prompts examples:
 
 - User account authorization
 
-  1. User account must have all the [required roles](https://yandex.cloud/en/docs/metadata-hub/security/data-catalog-roles) (for example, `datacatalog.viewer`).
+  1. User account must have all the [required roles](https://yandex.cloud/en/docs/metadata-hub/security/data-catalog-roles) (e.g. `data-catalog.viewer`).
 
   2. [Install](https://yandex.cloud/en/docs/cli/quickstart) Yandex Cloud CLI.
 
@@ -39,7 +39,7 @@ Prompts examples:
 
   1. [Create](https://yandex.cloud/en/docs/iam/operations/sa/create) a service account you will use to work with the MCP server.
 
-  2. [Assign](https://yandex.cloud/en/docs/iam/operations/sa/assign-role-for-sa#binding-role-resource) all [required roles](https://yandex.cloud/en/docs/metadata-hub/security/data-catalog-roles) (for example, `datacatalog.viewer`) to the service account you've created.
+  2. [Assign](https://yandex.cloud/en/docs/iam/operations/sa/assign-role-for-sa#binding-role-resource) all [required roles](https://yandex.cloud/en/docs/metadata-hub/security/data-catalog-roles) (e.g. `data-catalog.viewer`) to the service account you've created.
 
   3. There are different authorization options, depending on the environment you will use to send your requests:
 

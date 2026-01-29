@@ -4,6 +4,18 @@
 
 MCP server for managing Yandex Cloud Serverless Containers - create, deploy, configure, and manage containerized applications with revisions, scaling policies, and access control.
 
+## Table of Contents
+
+- [Yandex Cloud Serverless Containers MCP Server (Preview)](#yandex-cloud-serverless-containers-mcp-server-preview)
+  - [Table of Contents](#table-of-contents)
+  - [Use Cases](#use-cases)
+  - [Installation and Usage](#installation-and-usage)
+    - [Prerequisites](#prerequisites)
+      - [Authorization](#authorization)
+    - [Headers](#headers)
+    - [Configuration](#configuration)
+  - [Tools](#tools)
+
 ## Use Cases
 
 Prompts examples:
@@ -57,6 +69,27 @@ Prompts examples:
 
           Use the [Metadata service](https://yandex.cloud/en/docs/security/standard/authentication#service-accounts) by assigning the service account to the VM.
 
+### Headers
+
+<table>
+  <tr>
+    <th> Header </th>
+    <th> Description </th>
+    <th> Requireness </th>
+  </tr>
+
+  <tr>
+    <td> Authorization </td>
+    <td> Yandex Cloud IAM Token (see <a href="#authorization">Authorization</a>) </td>
+    <td> Required </td>
+  </tr>
+  <tr>
+    <td> Folder-Id </td>
+    <td> Yandex Cloud folder as default working area. If not specified, tool's input field <code>folder_id</code> is required. </td>
+    <td> Optional </td>
+  </tr>
+</table>
+
 ### Configuration
 
 To start working with Yandex Cloud Serverless Containers MCP Server, you have to update your assistant's configuration (e.g. Cline, Roo Code or Claude Desktop) by adding `yandex-cloud-containers` server.
@@ -72,7 +105,8 @@ There are two available ways:
       "type": "streamableHttp",
       "url": "https://containers.mcp.cloud.yandex.net/mcp",
       "headers": {
-        "Authorization": "Bearer <YC IAM Token>"
+        "Authorization": "Bearer <YC IAM Token>",
+        "Folder-Id": "<YC Folder ID>"
       }
     }
   }
@@ -91,7 +125,8 @@ There are two available ways:
         "-y",
         "mcp-remote",
         "https://containers.mcp.cloud.yandex.net/mcp",
-        "--header", "Authorization:Bearer <YC IAM Token>"
+        "--header", "Authorization:Bearer <YC IAM Token>",
+        "--header", "Folder-Id:<YC Folder ID>"
       ]
     }
   }
@@ -100,7 +135,7 @@ There are two available ways:
 
 For the second option you also need `npx` to be installed.
 
-### Tools
+## Tools
 
 Yandex Cloud Serverless Containers MCP Server currently consists of 13 tools listed below:
 

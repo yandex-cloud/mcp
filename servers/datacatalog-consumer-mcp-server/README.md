@@ -4,6 +4,18 @@ MCP server for Yandex Cloud Data Catalog Consumer is a centralized repository of
 
 It allows searching various types of metadata: tables, views and queries, as well as getting the dependency graph (lineage) at the table and column level.
 
+## Table of Contents
+
+- [Yandex Cloud Data Catalog Consumer MCP Server](#yandex-cloud-data-catalog-consumer-mcp-server)
+  - [Table of Contents](#table-of-contents)
+  - [Use Cases](#use-cases)
+  - [Installation and Usage](#installation-and-usage)
+    - [Prerequisites](#prerequisites)
+      - [Authorization](#authorization)
+    - [Headers](#headers)
+    - [Configuration](#configuration)
+  - [Tools](#tools)
+
 ## Use Cases
 
 Prompts examples:
@@ -57,6 +69,22 @@ Prompts examples:
 
           Use the [metadata service](https://yandex.cloud/en/docs/security/standard/authentication#service-accounts) by assigning the service account to the Virtual Machine.
 
+### Headers
+
+<table>
+  <tr>
+    <th> Header </th>
+    <th> Description </th>
+    <th> Requireness </th>
+  </tr>
+
+  <tr>
+    <td> Authorization </td>
+    <td> Yandex Cloud IAM Token (see <a href="#authorization">Authorization</a>) </td>
+    <td> Required </td>
+  </tr>
+</table>
+
 ### Configuration
 
 To start working with Yandex Cloud Data Catalog MCP Server, you have to update your assistant's configuration (for example, Cline, Roo Code or Claude Desktop) by adding the `yandex-cloud-data-catalog` server.
@@ -100,7 +128,7 @@ There are two available ways:
 
 For the second option you also need `npx` to be installed.
 
-### Tools
+## Tools
 
 Yandex Cloud Data Catalog MCP Server currently consists of 4 tools listed below:
 

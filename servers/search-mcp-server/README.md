@@ -4,6 +4,18 @@ Web search using Yandex Search: both generative and classic.
 
 The server uses international search type: `yandex.com` search domain name and `EN` localization.
 
+## Table of Contents
+
+- [Yandex Search MCP Server](#yandex-search-mcp-server)
+  - [Table of Contents](#table-of-contents)
+  - [Use Cases](#use-cases)
+  - [Installation and Usage](#installation-and-usage)
+    - [Prerequisites](#prerequisites)
+      - [Authorization](#authorization)
+    - [Headers](#headers)
+    - [Configuration](#configuration)
+  - [Tools](#tools)
+
 ## Use Cases
 
 Prompts examples:
@@ -15,9 +27,7 @@ Prompts examples:
 
 ### Prerequisites
 
-1. Existing [Yandex Cloud folder](https://yandex.cloud/en/docs/resource-manager/operations/folder/create) for [Yandex Search API](https://yandex.cloud/en/docs/search-api/)
-
-2. Authorization
+#### Authorization
 
 - User account authorization
 
@@ -53,6 +63,27 @@ Prompts examples:
 
           Use the [Metadata service](https://yandex.cloud/en/docs/security/standard/authentication#service-accounts) by assigning the service account to the VM.
 
+### Headers
+
+<table>
+  <tr>
+    <th> Header </th>
+    <th> Description </th>
+    <th> Requireness </th>
+  </tr>
+
+  <tr>
+    <td> Authorization </td>
+    <td> Yandex Cloud IAM Token (see <a href="#authorization">Authorization</a>) </td>
+    <td> Required </td>
+  </tr>
+  <tr>
+    <td> Folder-Id </td>
+    <td> Yandex Cloud folder as default working area. If not specified, tool's input field <code>folder_id</code> is required. </td>
+    <td> Optional </td>
+  </tr>
+</table>
+
 ### Configuration
 
 To start working with Yandex Search MCP Server, you have to update your assistant's configuration (e.g. Cline, Roo Code or Claude Desktop) by adding `yandex-search` server.
@@ -69,7 +100,7 @@ There are two available ways:
       "url": "https://search.mcp.cloud.yandex.net/mcp",
       "headers": {
         "Authorization": "Bearer <YC IAM Token>",
-        "Folder-Id": "<YC Folder ID>" // You can set `Folder-Id` header to not provide `folderId` argument in each request
+        "Folder-Id": "<YC Folder ID>"
       }
     }
   }
@@ -89,7 +120,7 @@ There are two available ways:
         "mcp-remote",
         "https://search.mcp.cloud.yandex.net/mcp",
         "--header", "Authorization:Bearer <YC IAM Token>",
-        "--header", "Folder-Id:<YC Folder ID>" // You can set `Folder-Id` header to not provide `folderId` argument in each request
+        "--header", "Folder-Id:<YC Folder ID>"
       ]
     }
   }
@@ -98,7 +129,7 @@ There are two available ways:
 
 For the second option you also need `npx` to be installed.
 
-### Tools
+## Tools
 
 Yandex Search MCP Server currently consists of two tools listed below:
 

@@ -2,6 +2,16 @@
 
 Real-time free access to official Yandex Cloud documentation using generative search.
 
+## Table of Contents
+
+- [Yandex Cloud Documentation MCP Server](#yandex-cloud-documentation-mcp-server)
+  - [Table of Contents](#table-of-contents)
+  - [Use Cases](#use-cases)
+  - [Installation and Usage](#installation-and-usage)
+    - [Prerequisites](#prerequisites)
+    - [Configuration](#configuration)
+  - [Tools](#tools)
+
 ## Use Cases
 
 Prompts examples:
@@ -56,7 +66,7 @@ There are two available ways:
 
 For the second option you also need `npx` to be installed.
 
-### Tools
+## Tools
 
 Yandex Cloud Documentation MCP Server currently consists of one tool shown below:
 

@@ -64,16 +64,17 @@ There are two available ways:
 #### 1. Directly via streamable http
 
 <details>
-<summary>Server configuration template</summary>
+<summary>Server configuration example</summary>
 
 ```json
 {
   "mcpServers": {
-    "<server-name>": {
+    "yandex-cloud-toolkit": {
       "type": "streamableHttp",
-      "url": "<server-url>",
+      "url": "https://toolkit.mcp.cloud.yandex.net/mcp",
       "headers": {
-        // Server-specific headers, e.g. "Authorization: Bearer <YC IAM token>"
+        "Authorization": "Bearer <YC IAM Token>",
+        "Folder-Id": "<YC Folder ID>"
       }
     }
   }
@@ -85,19 +86,20 @@ There are two available ways:
 #### 2. Using stdio with `npx mcp-remote` client
 
 <details>
-<summary>Server configuration template</summary>
+<summary>Server configuration example</summary>
 
 ```json
 {
   "mcpServers": {
-    "<server-name>": {
+    "yandex-cloud-toolkit": {
       "type": "stdio",
       "command": "npx",
       "args": [
         "-y",
         "mcp-remote",
-        "<server-url>",
-        "--header" // Server-specific header, e.g. "Authorization:Bearer <YC IAM Token>"
+        "https://toolkit.mcp.cloud.yandex.net/mcp",
+        "--header", "Authorization:Bearer <YC IAM Token>",
+        "--header", "Folder-Id:<YC Folder ID>"
       ]
     }
   }
@@ -106,7 +108,7 @@ There are two available ways:
 
 </details>
 
-> Specific configurations for each server are located in particular MCP servers documentation, e.g. [this one for Toolkit MCP Server](./servers/toolkit-mcp-server/README.md#configuration).
+> Specific configurations for each server are located in particular MCP servers documentation, e.g. [this one for Yandex Search MCP Server](./servers/search-mcp-server/README.md#configuration).
 
 ### Authorization
 

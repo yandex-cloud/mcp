@@ -141,7 +141,7 @@ For the second option you also need `npx` to be installed.
 
 ## Tools
 
-Yandex Cloud Toolkit MCP Server currently consists of 43 tools listed below:
+Yandex Cloud Toolkit MCP Server currently consists of 42 tools listed below:
 
 <table>
   <tr>
@@ -284,10 +284,6 @@ Yandex Cloud Toolkit MCP Server currently consists of 43 tools listed below:
   <tr>
     <td> folder_accesses_update </td>
     <td> Update access bindings for Yandex Cloud folder </td>
-  </tr>
-  <tr>
-    <td> folder_access_set </td>
-    <td> Set access bindings for Yandex Cloud folder </td>
   </tr>
 
   <tr>

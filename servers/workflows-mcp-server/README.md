@@ -137,7 +137,7 @@ For the second option you also need `npx` to be installed.
 
 ## Tools
 
-Yandex Cloud Serverless Workflows MCP Server currently consists of 16 tools listed below:
+Yandex Cloud Serverless Workflows MCP Server currently consists of 15 tools listed below:
 
 <table>
   <tr>
@@ -168,10 +168,6 @@ Yandex Cloud Serverless Workflows MCP Server currently consists of 16 tools list
   <tr>
     <td> workflow_operations_list </td>
     <td> List Yandex Cloud Serverless Workflow operations </td>
-  </tr>
-  <tr>
-    <td> workflow_access_set </td>
-    <td> Set access bindings for Yandex Cloud Serverless Workflow </td>
   </tr>
   <tr>
     <td> workflow_accesses_list </td>

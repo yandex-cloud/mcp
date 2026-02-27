@@ -135,7 +135,7 @@ For the second option you also need `npx` to be installed.
 
 ## Tools
 
-Yandex Cloud Functions MCP Server currently consists of 24 tools listed below:
+Yandex Cloud Functions MCP Server currently consists of 23 tools listed below:
 
 <table>
   <tr>
@@ -214,10 +214,6 @@ Yandex Cloud Functions MCP Server currently consists of 24 tools listed below:
   <tr>
     <td> function_operations_list </td>
     <td> List Yandex Cloud Serverless Function operations </td>
-  </tr>
-  <tr>
-    <td> function_access_set </td>
-    <td> Set access bindings for Yandex Cloud Serverless Function </td>
   </tr>
   <tr>
     <td> function_accesses_list </td>

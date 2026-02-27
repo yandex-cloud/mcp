@@ -137,7 +137,7 @@ For the second option you also need `npx` to be installed.
 
 ## Tools
 
-Yandex Cloud Serverless Containers MCP Server currently consists of 13 tools listed below:
+Yandex Cloud Serverless Containers MCP Server currently consists of 12 tools listed below:
 
 <table>
   <tr>
@@ -184,10 +184,6 @@ Yandex Cloud Serverless Containers MCP Server currently consists of 13 tools lis
   <tr>
     <td> container_operations_list </td>
     <td> List Yandex Cloud Serverless Container operations </td>
-  </tr>
-  <tr>
-    <td> container_access_set </td>
-    <td> Set access bindings for Yandex Cloud Serverless Container </td>
   </tr>
   <tr>
     <td> container_accesses_list </td>

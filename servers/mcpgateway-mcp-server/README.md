@@ -137,7 +137,7 @@ For the second option you also need `npx` to be installed.
 
 ## Tools
 
-Yandex Cloud MCP Gateway MCP Server currently consists of 8 tools listed below:
+Yandex Cloud MCP Gateway MCP Server currently consists of 7 tools listed below:
 
 <table>
   <tr>
@@ -168,10 +168,6 @@ Yandex Cloud MCP Gateway MCP Server currently consists of 8 tools listed below:
   <tr>
     <td> mcp_gateway_operations_list </td>
     <td> List Yandex Cloud MCP Gateway operations </td>
-  </tr>
-  <tr>
-    <td> mcp_gateway_access_set </td>
-    <td> Set access bindings for Yandex Cloud MCP Gateway </td>
   </tr>
   <tr>
     <td> mcp_gateway_accesses_list </td>

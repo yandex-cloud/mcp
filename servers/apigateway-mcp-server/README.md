@@ -137,7 +137,7 @@ For the second option you also need `npx` to be installed.
 
 ## Tools
 
-Yandex Cloud API Gateway MCP Server currently consists of 17 tools listed below:
+Yandex Cloud API Gateway MCP Server currently consists of 16 tools listed below:
 
 <table>
   <tr>
@@ -188,10 +188,6 @@ Yandex Cloud API Gateway MCP Server currently consists of 17 tools listed below:
   <tr>
     <td> api_gateway_operations_list </td>
     <td> List Yandex Cloud API Gateway operations </td>
-  </tr>
-  <tr>
-    <td> api_gateway_access_set </td>
-    <td> Set access bindings for Yandex Cloud API Gateway </td>
   </tr>
   <tr>
     <td> api_gateway_accesses_list </td>

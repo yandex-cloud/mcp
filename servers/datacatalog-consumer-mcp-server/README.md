@@ -10,10 +10,10 @@ It allows searching various types of metadata: tables, views and queries, as wel
   - [Table of Contents](#table-of-contents)
   - [Use Cases](#use-cases)
   - [Installation and Usage](#installation-and-usage)
-    - [Prerequisites](#prerequisites)
-      - [Authorization](#authorization)
     - [Headers](#headers)
     - [Configuration](#configuration)
+      - [NPM Client (recommended)](#npm-client-recommended)
+      - [Streamable HTTP](#streamable-http)
   - [Tools](#tools)
 
 ## Use Cases
@@ -31,59 +31,11 @@ Prompts examples:
 
 ## Installation and Usage
 
-### Prerequisites
-
-#### Authorization
-
-- User account authorization
-
-  1. User account must have all the [required roles](https://yandex.cloud/en/docs/metadata-hub/security/data-catalog-roles) (e.g. `data-catalog.viewer`).
-
-  2. [Install](https://yandex.cloud/en/docs/cli/quickstart) Yandex Cloud CLI.
-
-  3. Get an IAM token for a Yandex account by running the `yc iam create-token` CLI command.
-
-      Then valid authorization header will be `Authorization: Bearer <IAM token>`.
-
-      > The IAM token lifetime does not exceed 12 hours; however, we recommend requesting a token more often, e.g., every hour.
-
-- [Service account](https://yandex.cloud/en/docs/iam/concepts/users/service-accounts) authorization
-
-  1. [Create](https://yandex.cloud/en/docs/iam/operations/sa/create) a service account you will use to work with the MCP server.
-
-  2. [Assign](https://yandex.cloud/en/docs/iam/operations/sa/assign-role-for-sa#binding-role-resource) all [required roles](https://yandex.cloud/en/docs/metadata-hub/security/data-catalog-roles) (e.g. `data-catalog.viewer`) to the service account you've created.
-
-  3. There are different authorization options, depending on the environment you will use to send your requests:
-
-      1. Local usage:
-
-          1. [Install](https://yandex.cloud/en/docs/cli/quickstart) Yandex Cloud CLI;
-
-          2. Get a service account's IAM token by running the `yc iam create-token --impersonate-service-account-id <service-account-id>` CLI command.
-
-          Then valid authorization header will be `Authorization: Bearer <IAM token>`.
-
-          > The IAM token lifetime does not exceed 12 hours; however, we recommend requesting a token more often, e.g., every hour.
-
-      2. Yandex Cloud Compute Instance (Virtual Machine):
-
-          Use the [metadata service](https://yandex.cloud/en/docs/security/standard/authentication#service-accounts) by assigning the service account to the Virtual Machine.
-
 ### Headers
 
-<table>
-  <tr>
-    <th> Header </th>
-    <th> Description </th>
-    <th> Requireness </th>
-  </tr>
-
-  <tr>
-    <td> Authorization </td>
-    <td> Yandex Cloud IAM Token (see <a href="#authorization">Authorization</a>) </td>
-    <td> Required </td>
-  </tr>
-</table>
+| Header | Description | Requireness |
+| ------------- | ------------- | --------- |
+| Authorization | Yandex Cloud IAM Token for Streamable HTTP authorization | Required for Streamable HTTP |
 
 ### Configuration
 
@@ -91,7 +43,47 @@ To start working with Yandex Cloud Data Catalog MCP Server, you have to update y
 
 There are two available ways:
 
-1. Directly via streamable HTTP:
+#### NPM Client (recommended)
+
+**Prerequisites:**
+
+- Roles. Account to perform operations with this MCP Server must have the [required roles](https://yandex.cloud/en/docs/metadata-hub/security/data-catalog-roles) (e.g., `data-catalog.viewer`).
+- Node.js 18.0.0 or higher
+- [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart) (`yc`) installed with configured user profile
+
+> See the [package documentation](https://www.npmjs.com/package/@yandex-cloud/mcp) for more details.
+
+**Configuration:**
+
+```json
+{
+  "mcpServers": {
+    "yandex-cloud-datacatalog-consumer": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y", "@yandex-cloud/mcp",
+        "-s", "datacatalog-consumer",
+        "-p", "<CLI profile (optional)>"
+      ]
+    }
+  }
+}
+```
+
+#### Streamable HTTP
+
+**Prerequisites:**
+
+- Roles. Account to perform operations with this MCP Server must have the [required roles](https://yandex.cloud/en/docs/metadata-hub/security/data-catalog-roles) (e.g., `data-catalog.viewer`).
+- [IAM token](https://yandex.cloud/en/docs/iam/concepts/authorization/iam-token). You can get it using [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart):
+
+  - `yc iam create-token` for user account
+  - `yc iam create-token --impersonate-service-account-id <service-account-id>` for [service account](https://yandex.cloud/en/docs/iam/concepts/users/service-accounts)
+
+  > The IAM token has a maximum lifespan of **12 hours**. After expiration, it must be rotated.
+
+**Configuration:**
 
 ```json
 {
@@ -106,27 +98,6 @@ There are two available ways:
   }
 }
 ```
-
-2. Using stdio with the `npx mcp-remote` client:
-
-```json
-{
-  "mcpServers": {
-    "yandex-cloud-data-catalog": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://datacatalog-consumer.mcp.cloud.yandex.net/mcp",
-        "--header", "Authorization:Bearer <YC IAM Token>"
-      ]
-    }
-  }
-}
-```
-
-For the second option you also need `npx` to be installed.
 
 ## Tools
 

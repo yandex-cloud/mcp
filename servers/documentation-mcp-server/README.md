@@ -8,8 +8,9 @@ Real-time free access to official Yandex Cloud documentation using generative se
   - [Table of Contents](#table-of-contents)
   - [Use Cases](#use-cases)
   - [Installation and Usage](#installation-and-usage)
-    - [Prerequisites](#prerequisites)
     - [Configuration](#configuration)
+      - [Streamable HTTP](#streamable-http)
+      - [NPM Client](#npm-client)
   - [Tools](#tools)
 
 ## Use Cases
@@ -23,17 +24,15 @@ Prompts examples:
 
 ## Installation and Usage
 
-### Prerequisites
-
-No authorization credentials needed.
-
 ### Configuration
 
 To start working with Yandex Cloud Documentation MCP Server, you have to update your assistant's configuration (e.g. Cline, Roo Code or Claude Desktop) by adding `yandex-cloud-documentation` server.
 
 There are two available ways:
 
-1. Directly via streamable http
+#### Streamable HTTP
+
+**Configuration:**
 
 ```json
 {
@@ -46,7 +45,15 @@ There are two available ways:
 }
 ```
 
-2. Using stdio with `npx mcp-remote` client
+#### NPM Client
+
+**Prerequisites:**
+
+- Node.js 18.0.0 or higher
+
+> See the [package documentation](https://www.npmjs.com/package/@yandex-cloud/mcp) for more details.
+
+**Configuration:**
 
 ```json
 {
@@ -55,16 +62,14 @@ There are two available ways:
       "type": "stdio",
       "command": "npx",
       "args": [
-        "-y",
-        "mcp-remote",
-        "https://docs.mcp.cloud.yandex.net/mcp"
+        "-y", "@yandex-cloud/mcp",
+        "-s", "docs",
+        "--no-auth"
       ]
     }
   }
 }
 ```
-
-For the second option you also need `npx` to be installed.
 
 ## Tools
 

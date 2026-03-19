@@ -10,10 +10,10 @@ The server uses international search type: `yandex.com` search domain name and `
   - [Table of Contents](#table-of-contents)
   - [Use Cases](#use-cases)
   - [Installation and Usage](#installation-and-usage)
-    - [Prerequisites](#prerequisites)
-      - [Authorization](#authorization)
     - [Headers](#headers)
     - [Configuration](#configuration)
+      - [NPM Client (recommended)](#npm-client-recommended)
+      - [Streamable HTTP](#streamable-http)
   - [Tools](#tools)
 
 ## Use Cases
@@ -25,64 +25,12 @@ Prompts examples:
 
 ## Installation and Usage
 
-### Prerequisites
-
-#### Authorization
-
-- User account authorization
-
-    1. User account must have the `search-api.webSearch.user` role in the folder;
-
-    2. [Install](https://yandex.cloud/en/docs/cli/quickstart) Yandex Cloud CLI;
-
-    3. Get IAM token with `yc iam create-token` CLI command.
-
-    Then valid authorization header will be `Authorization: Bearer <IAM token>`.
-
-    > Note that token has a maximum lifespan of **12 hours**. After expiration, it must be recreated.
-
-- [Service account](https://yandex.cloud/en/docs/iam/concepts/users/service-accounts) authorization
-
-  1. [Create](https://yandex.cloud/en/docs/iam/operations/sa/create) a service account you will use to send requests to [Yandex Search API](https://yandex.cloud/en/docs/search-api/).
-
-  2. [Assign](https://yandex.cloud/en/docs/iam/operations/sa/assign-role-for-sa#binding-role-resource) the `search-api.webSearch.user` role to the service account you created.
-
-  3. There are different authorization options, depending on the environment you will call MCP server from:
-
-      1. Local usage
-
-          1. [Install](https://yandex.cloud/en/docs/cli/quickstart) Yandex Cloud CLI;
-
-          2. Get service account's IAM token with `yc iam create-token --impersonate-service-account-id <service-account-id>` CLI command.
-
-          Then valid authorization header will be `Authorization: Bearer <IAM token>`.
-
-          > Note that token has a maximum lifespan of **12 hours**. After expiration, it must be recreated.
-
-      2. Yandex Cloud Compute Instance (Virtual Machine)
-
-          Use the [Metadata service](https://yandex.cloud/en/docs/security/standard/authentication#service-accounts) by assigning the service account to the VM.
-
 ### Headers
 
-<table>
-  <tr>
-    <th> Header </th>
-    <th> Description </th>
-    <th> Requireness </th>
-  </tr>
-
-  <tr>
-    <td> Authorization </td>
-    <td> Yandex Cloud IAM Token (see <a href="#authorization">Authorization</a>) </td>
-    <td> Required </td>
-  </tr>
-  <tr>
-    <td> Folder-Id </td>
-    <td> Yandex Cloud folder as default working area. If not specified, tool's input field <code>folder_id</code> is required. </td>
-    <td> Optional </td>
-  </tr>
-</table>
+| Header | Description | Requireness |
+| ------------- | ------------- | --------- |
+| Folder-Id | Yandex Cloud folder as default value for MCP tool's input field `folder_id` | Optional |
+| Authorization | Yandex Cloud IAM Token for Streamable HTTP authorization | Required for Streamable HTTP |
 
 ### Configuration
 
@@ -90,7 +38,48 @@ To start working with Yandex Search MCP Server, you have to update your assistan
 
 There are two available ways:
 
-1. Directly via streamable http
+#### NPM Client (recommended)
+
+**Prerequisites:**
+
+- Roles. Account to perform operations with this MCP Server must have the `search-api.webSearch.user` [role](https://yandex.cloud/en/docs/search-api/security/) in the folder.
+- Node.js 18.0.0 or higher
+- [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart) (`yc`) installed with configured user profile
+
+> See the [package documentation](https://www.npmjs.com/package/@yandex-cloud/mcp) for more details.
+
+**Configuration:**
+
+```json
+{
+  "mcpServers": {
+    "yandex-search": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y", "@yandex-cloud/mcp",
+        "-s", "search",
+        "-p", "<CLI profile (optional)>",
+        "-H", "Folder-Id:<Folder ID (optional)>"
+      ]
+    }
+  }
+}
+```
+
+#### Streamable HTTP
+
+**Prerequisites:**
+
+- Roles. Account to perform operations with this MCP Server must have the `search-api.webSearch.user` [role](https://yandex.cloud/en/docs/search-api/security/) in the folder.
+- [IAM token](https://yandex.cloud/en/docs/iam/concepts/authorization/iam-token). You can get it using [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart):
+
+  - `yc iam create-token` for user account
+  - `yc iam create-token --impersonate-service-account-id <service-account-id>` for [service account](https://yandex.cloud/en/docs/iam/concepts/users/service-accounts)
+
+  > The IAM token has a maximum lifespan of **12 hours**. After expiration, it must be rotated.
+
+**Configuration:**
 
 ```json
 {
@@ -100,34 +89,12 @@ There are two available ways:
       "url": "https://search.mcp.cloud.yandex.net/mcp",
       "headers": {
         "Authorization": "Bearer <YC IAM Token>",
-        "Folder-Id": "<YC Folder ID>"
+        "Folder-Id": "<Folder ID (optional)>"
       }
     }
   }
 }
 ```
-
-2. Using stdio with `npx mcp-remote` client
-
-```json
-{
-  "mcpServers": {
-    "yandex-search": {
-      "type": "stdio",
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://search.mcp.cloud.yandex.net/mcp",
-        "--header", "Authorization:Bearer <YC IAM Token>",
-        "--header", "Folder-Id:<YC Folder ID>"
-      ]
-    }
-  }
-}
-```
-
-For the second option you also need `npx` to be installed.
 
 ## Tools
 

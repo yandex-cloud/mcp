@@ -1,6 +1,6 @@
 # Yandex Cloud MCP Servers
 
-Specialized MCP servers for interacting with the Yandex Cloud using the MCP protocol.
+Specialized MCP servers for interacting with Yandex Cloud using the MCP protocol.
 
 ## Table of Contents
 
@@ -10,11 +10,13 @@ Specialized MCP servers for interacting with the Yandex Cloud using the MCP prot
   - [YC MCP Servers Concept](#yc-mcp-servers-concept)
   - [Installing MCP Servers](#installing-mcp-servers)
     - [Available MCP Servers](#available-mcp-servers)
+      - [Deployment](#deployment)
+      - [Search & Knowledge](#search--knowledge)
+      - [Serverless](#serverless)
+      - [Data Platform](#data-platform)
     - [Configuration](#configuration)
-    - [Authorization](#authorization)
-  - [Current Restrictions](#current-restrictions)
-    - [Manual Installation](#manual-installation)
-    - [Manual IAM token Retrieval](#manual-iam-token-retrieval)
+      - [NPM Client (Stdio)](#1-npm-client-stdio)
+      - [Streamable HTTP](#2-streamable-http)
   - [License](#license)
 
 ## About Model Context Protocol (MCP)
@@ -41,51 +43,55 @@ Using provided MCP servers, you can manage Yandex Cloud infrastructure either fo
 
 ### Available MCP Servers
 
+#### Deployment
+
 | Server Name | Description | Install |
-|-------------|-------------|---------|
-| [🛠️ Toolkit MCP Server](./servers/toolkit-mcp-server/README.md)    | Lightweight MCP server to deploy simple applications in Yandex Cloud with Compute, VPC, IAM, Storage (S3) and Managed YDB | [Install](./servers/toolkit-mcp-server/README.md#prerequisites) |
-| [📚 Documentation MCP Server](./servers/documentation-mcp-server/README.md) | Real-time free access to official Yandex Cloud documentation using generative search | [Install](./servers/documentation-mcp-server/README.md#prerequisites) |
-| [🔍 Yandex Search MCP Server](./servers/search-mcp-server/README.md) | Web search using Yandex Search: both generative and classic | [Install](./servers/search-mcp-server/README.md#prerequisites) |
-| [🚀 Functions MCP Server (Preview)](./servers/functions-mcp-server/README.md) | Manage Yandex Cloud Serverless Functions - create, deploy, configure functions and their versions, tags and scaling policies | [Install](./servers/functions-mcp-server/README.md#prerequisites) |
-| [📦 Serverless Containers MCP Server (Preview)](./servers/containers-mcp-server/README.md) | Manage Yandex Cloud Serverless Containers - deploy containerized applications with revisions, and scaling policies | [Install](./servers/containers-mcp-server/README.md#prerequisites) |
-| [🔌 Triggers MCP Server (Preview)](./servers/triggers-mcp-server/README.md) | Manage event-driven triggers for functions and containers from various sources like timers, message queues, object storage, and IoT | [Install](./servers/triggers-mcp-server/README.md#prerequisites) |
-| [⚡ Workflows MCP Server (Preview)](./servers/workflows-mcp-server/README.md) | Create and manage serverless workflows with YAML specifications, executions, and scheduling | [Install](./servers/workflows-mcp-server/README.md#prerequisites) |
-| [🌐 API Gateway MCP Server (Preview)](./servers/apigateway-mcp-server/README.md) | Manage API gateways with OpenAPI specifications, custom domains, and WebSocket connections | [Install](./servers/apigateway-mcp-server/README.md#prerequisites) |
-| [🔗 MCP Gateway MCP Server (Preview)](./servers/mcpgateway-mcp-server/README.md) | Configure MCP gateways with custom tools that invoke functions, containers, HTTP endpoints, and workflows | [Install](./servers/mcpgateway-mcp-server/README.md#prerequisites) |
-| [🕵️‍♂️ Data Catalog Consumer MCP Server](./servers/datacatalog-consumer-mcp-server/README.md) | Searching tables, views, queries and viewing dependency graphs in a centralized organization metadata repository | [Install](./servers/datacatalog-consumer-mcp-server/README.md#prerequisites) |
+| ------------- | ------------- | --------- |
+| [🛠️ Toolkit MCP Server](./servers/toolkit-mcp-server/README.md) | MCP server to deploy simple applications in Yandex Cloud with Compute, VPC, IAM, Storage (S3) and Managed YDB | [Install](./servers/toolkit-mcp-server/README.md#configuration) |
+
+#### Search & Knowledge
+
+| Server Name | Description | Install |
+| ------------- | ------------- | --------- |
+| [📚 Documentation MCP Server](./servers/documentation-mcp-server/README.md) | Real-time free access to official Yandex Cloud documentation using generative search | [Install](./servers/documentation-mcp-server/README.md#configuration) |
+| [🔍 Yandex Search MCP Server](./servers/search-mcp-server/README.md) | Web search using Yandex Search: both generative and classic | [Install](./servers/search-mcp-server/README.md#configuration) |
+
+#### Serverless
+
+| Server Name | Description | Install |
+| ------------- | ------------- | --------- |
+| [🚀 Functions MCP Server (Preview)](./servers/functions-mcp-server/README.md) | Manage Yandex Cloud Serverless Functions - create, deploy, configure functions and their versions, tags and scaling policies | [Install](./servers/functions-mcp-server/README.md#configuration) |
+| [📦 Serverless Containers MCP Server (Preview)](./servers/containers-mcp-server/README.md) | Manage Yandex Cloud Serverless Containers - deploy containerized applications with revisions, and scaling policies | [Install](./servers/containers-mcp-server/README.md#configuration) |
+| [🔌 Triggers MCP Server (Preview)](./servers/triggers-mcp-server/README.md) | Manage event-driven triggers for functions and containers from various sources like timers, message queues, object storage, and IoT | [Install](./servers/triggers-mcp-server/README.md#configuration) |
+| [⚡ Workflows MCP Server (Preview)](./servers/workflows-mcp-server/README.md) | Create and manage serverless workflows with YAML specifications, executions, and scheduling | [Install](./servers/workflows-mcp-server/README.md#configuration) |
+| [🌐 API Gateway MCP Server (Preview)](./servers/apigateway-mcp-server/README.md) | Manage API gateways with OpenAPI specifications, custom domains, and WebSocket connections | [Install](./servers/apigateway-mcp-server/README.md#configuration) |
+| [🔗 MCP Gateway MCP Server (Preview)](./servers/mcpgateway-mcp-server/README.md) | Configure MCP gateways with custom tools that invoke functions, containers, HTTP endpoints, and workflows | [Install](./servers/mcpgateway-mcp-server/README.md#configuration) |
+
+#### Data Platform
+
+| Server Name | Description | Install |
+| ------------- | ------------- | --------- |
+| [🕵️‍♂️ Data Catalog Consumer MCP Server](./servers/datacatalog-consumer-mcp-server/README.md) | Searching tables, views, queries and viewing dependency graphs in a centralized organization metadata repository | [Install](./servers/datacatalog-consumer-mcp-server/README.md#configuration) |
 
 ### Configuration
 
-To connect MCP servers to your assistant, you have to update your assistant's configuration (e.g. Cline, Roo Code or Claude Desktop) by adding chosen server.
+To connect your assistant with MCP servers, you have to update your assistant's configuration (e.g. Cline, Roo Code or Claude Desktop) by adding chosen server.
 
-There are two available ways:
+Most MCP servers need to be authorized in Yandex Cloud. There are several ways to configure and authorize:
 
-#### 1. Directly via streamable http
+#### 1. NPM Client (Stdio)
 
-<details>
-<summary>Server configuration example</summary>
+Provides automatic authentication by integrating with [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart).
 
-```json
-{
-  "mcpServers": {
-    "yandex-cloud-toolkit": {
-      "type": "streamableHttp",
-      "url": "https://toolkit.mcp.cloud.yandex.net/mcp",
-      "headers": {
-        "Authorization": "Bearer <YC IAM Token>",
-        "Folder-Id": "<YC Folder ID>"
-      }
-    }
-  }
-}
-```
+**Prerequisites:**
 
-</details>
+- Server-specific Yandex Cloud [roles](https://yandex.cloud/en/docs/iam/concepts/access-control/roles).
+- Node.js 18.0.0 or higher
+- [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart) (`yc`) installed with configured user profile
 
-#### 2. Using stdio with `npx mcp-remote` client
+> See the [package documentation](https://www.npmjs.com/package/@yandex-cloud/mcp) for more details.
 
-<details>
-<summary>Server configuration example</summary>
+**Configuration example:**
 
 ```json
 {
@@ -94,54 +100,45 @@ There are two available ways:
       "type": "stdio",
       "command": "npx",
       "args": [
-        "-y",
-        "mcp-remote",
-        "https://toolkit.mcp.cloud.yandex.net/mcp",
-        "--header", "Authorization:Bearer <YC IAM Token>",
-        "--header", "Folder-Id:<YC Folder ID>"
+        "-y", "@yandex-cloud/mcp",
+        "-s", "toolkit"
       ]
     }
   }
 }
 ```
 
-</details>
+> Here `toolkit` stands for the server name, e.g. `search`, `functions`, `docs`. You can find the particular server's name in its npm client configuration section, e.g. [this one](./servers/search-mcp-server/README.md#npm-client-recommended) for Yandex Search MCP Server.
 
-> Specific configurations for each server are located in particular MCP servers documentation, e.g. [this one for Yandex Search MCP Server](./servers/search-mcp-server/README.md#configuration).
+#### 2. Streamable HTTP
 
-### Authorization
+**Prerequisites:**
 
-Most of MCP servers need `Authorization` header to authorize user or system account.
+- Server-specific Yandex Cloud [roles](https://yandex.cloud/en/docs/iam/concepts/access-control/roles).
+- [IAM token](https://yandex.cloud/en/docs/iam/concepts/authorization/iam-token). You can get it using [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart):
 
-Currently available authorization methods:
+  - `yc iam create-token` for user account
+  - `yc iam create-token --impersonate-service-account-id <service-account-id>` for [service account](https://yandex.cloud/en/docs/iam/concepts/users/service-accounts)
 
-1. [IAM token](https://yandex.cloud/en/docs/iam/concepts/authorization/iam-token) with `Authorization: Bearer <IAM token>` header in MCP-server configuration.
+  > The IAM token has a maximum lifespan of **12 hours**. After expiration, it must be rotated.
 
-2. [Metadata service](https://yandex.cloud/en/docs/security/standard/authentication#service-accounts) on the Compute Instance with assigned service account.
+**Configuration example:**
 
-## Current Restrictions
+```json
+{
+  "mcpServers": {
+    "yandex-cloud-toolkit": {
+      "type": "streamableHttp",
+      "url": "https://toolkit.mcp.cloud.yandex.net/mcp",
+      "headers": {
+        "Authorization": "Bearer <YC IAM Token>"
+      }
+    }
+  }
+}
+```
 
-### Manual Installation
-
-Temporarily, you have to manually update your MCP configuration in your IDE to install an MCP server.
-
-After we publish our MCP servers in well-known MCP marketplaces (e.g. VS Code MCP Marketplace), you will install an MCP server just in one click.
-
-### Manual IAM token Retrieval
-
-Most of MCP servers need Yandex Cloud IAM token for authorization purposes.
-
-Temporarily, you have to manually retrieve your YC IAM token and specify it in `Authorization` header.
-
-You can get the token using [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart) with:
-
-- `yc iam create-token` command for user account
-
-- `yc iam create-token --impersonate-service-account-id <service-account-id>` command for [service account](https://yandex.cloud/en/docs/iam/concepts/users/service-accounts)
-
-> The issue is that IAM token has a maximum lifespan of **12 hours**. After expiration, the token must be manually recreated.
-
-In the near future, we'll implement authorization for MCP servers using [OAuth 2.1](https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization).
+> You can find the particular server's url in its streamable http configuration section, e.g. [this one](./servers/search-mcp-server/README.md#streamable-http) for Yandex Search MCP Server.
 
 ## License
 

@@ -1,12 +1,10 @@
-# Yandex Cloud Serverless Containers MCP Server (Preview)
+# Yandex Cloud Serverless Containers MCP Server
 
-> The server is running in preview mode, some features may be unstable
-
-MCP server for managing Yandex Cloud Serverless Containers - create, deploy, configure, and manage containerized applications with revisions, scaling policies, and access control.
+MCP server for managing Yandex Cloud Serverless Containers - create, deploy, configure, and manage containerized applications with revisions, scaling policies, access control and container registry management.
 
 ## Table of Contents
 
-- [Yandex Cloud Serverless Containers MCP Server (Preview)](#yandex-cloud-serverless-containers-mcp-server-preview)
+- [Yandex Cloud Serverless Containers MCP Server)](#yandex-cloud-serverless-containers-mcp-server)
   - [Table of Contents](#table-of-contents)
   - [Use Cases](#use-cases)
   - [Installation and Usage](#installation-and-usage)
@@ -104,7 +102,7 @@ There are two available ways:
 
 ## Tools
 
-Yandex Cloud Serverless Containers MCP Server currently consists of 12 tools listed below:
+Yandex Cloud Serverless Containers MCP Server currently consists of 24 tools listed below:
 
 <table>
   <tr>
@@ -112,6 +110,13 @@ Yandex Cloud Serverless Containers MCP Server currently consists of 12 tools lis
     <th> Description </th>
   </tr>
 
+  <tr>
+    <td> docker_images_list </td>
+    <td> 
+      List Yandex Cloud Docker images in the folder, container registry or repository.
+      To upload a Docker image, use `docker push` in Command Line Interface (CLI).
+    </td>
+  </tr>
   <tr>
     <td> container_get </td>
     <td> Get Yandex Cloud Serverless Container </td>
@@ -126,7 +131,7 @@ Yandex Cloud Serverless Containers MCP Server currently consists of 12 tools lis
   </tr>
   <tr>
     <td> container_update </td>
-    <td> Upate Yandex Cloud Serverless Container </td>
+    <td> Update Yandex Cloud Serverless Container </td>
   </tr>
   <tr>
     <td> container_delete </td>
@@ -146,7 +151,7 @@ Yandex Cloud Serverless Containers MCP Server currently consists of 12 tools lis
   </tr>
   <tr>
     <td> container_revisions_list </td>
-    <td> List Yandex Cloud Serverless Container revisions </td>
+    <td> List Yandex Cloud Serverless Container revisions: either for a specific container or all in the folder </td>
   </tr>
   <tr>
     <td> container_operations_list </td>
@@ -159,5 +164,49 @@ Yandex Cloud Serverless Containers MCP Server currently consists of 12 tools lis
   <tr>
     <td> container_accesses_update </td>
     <td> Update access bindings for Yandex Cloud Serverless Container </td>
+  </tr>
+  <tr>
+    <td> docker_image_repositories_list </td>
+    <td> List Yandex Cloud Docker Container Registry repositories in the folder or registry </td>
+  </tr>
+  <tr>
+    <td> docker_image_repository_upsert </td>
+    <td> Upsert Yandex Cloud Docker Container Registry repository </td>
+  </tr>
+  <tr>
+    <td> docker_image_repository_delete </td>
+    <td> Delete Yandex Cloud Docker Container Registry repository </td>
+  </tr>
+  <tr>
+    <td> docker_image_repository_accesses_list </td>
+    <td> List access bindings for Yandex Cloud Container Registry repository </td>
+  </tr>
+  <tr>
+    <td> docker_image_repository_accesses_update </td>
+    <td> Update access bindings for Yandex Cloud Container Registry repository </td>
+  </tr>
+  <tr>
+    <td> docker_image_registries_list </td>
+    <td> List Yandex Cloud Docker Container Registries in the folder </td>
+  </tr>
+  <tr>
+    <td> docker_image_registry_create </td>
+    <td> Create Yandex Cloud Docker Container Registry </td>
+  </tr>
+  <tr>
+    <td> docker_image_registry_update </td>
+    <td> Update Yandex Cloud Docker Container Registry </td>
+  </tr>
+  <tr>
+    <td> docker_image_registry_delete </td>
+    <td> Delete Yandex Cloud Docker Container Registry </td>
+  </tr>
+  <tr>
+    <td> docker_image_registry_accesses_list </td>
+    <td> List access bindings for Yandex Cloud Container Registry </td>
+  </tr>
+  <tr>
+    <td> docker_image_registry_accesses_update </td>
+    <td> Update access bindings for Yandex Cloud Container Registry </td>
   </tr>
 </table>

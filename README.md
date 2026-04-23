@@ -81,15 +81,22 @@ Most MCP servers need to be authorized in Yandex Cloud. There are several ways t
 
 #### 1. NPM Client (Stdio)
 
-Provides automatic authentication by integrating with [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart).
+Provides authentication via OAuth (browser-based) or Yandex Cloud CLI (`yc`).
 
 **Prerequisites:**
 
 - Server-specific Yandex Cloud [roles](https://yandex.cloud/en/docs/iam/concepts/access-control/roles).
 - Node.js 18.0.0 or higher
-- [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart) (`yc`) installed with configured user profile
+- (Optional) [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart) (`yc`) - required only when using CLI authentication
 
 > See the [package documentation](https://www.npmjs.com/package/@yandex-cloud/mcp) for more details.
+
+**Authentication Options:**
+
+Choose one of the following:
+
+- **OAuth (recommended)**: Use `-S <user or service account ID>` or `-u <email>` for browser-based authentication
+- **CLI**: Use `-p <profile>` to authenticate via Yandex Cloud CLI (requires CLI installation)
 
 **Configuration example:**
 
@@ -101,7 +108,8 @@ Provides automatic authentication by integrating with [Yandex Cloud CLI](https:/
       "command": "npx",
       "args": [
         "-y", "@yandex-cloud/mcp",
-        "-s", "toolkit"
+        "-s", "toolkit",
+        "-S", "<User ID>"
       ]
     }
   }

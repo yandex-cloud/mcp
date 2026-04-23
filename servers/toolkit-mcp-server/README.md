@@ -10,10 +10,10 @@ Server interacts with Compute, VPC, IAM, Storage (S3) and Managed YDB.
   - [Table of Contents](#table-of-contents)
   - [Use Cases](#use-cases)
   - [Installation and Usage](#installation-and-usage)
-    - [Headers](#headers)
     - [Configuration](#configuration)
       - [NPM Client (recommended)](#npm-client-recommended)
       - [Streamable HTTP](#streamable-http)
+    - [Headers](#headers)
   - [Tools](#tools)
 
 ## Use Cases
@@ -28,14 +28,6 @@ Prompts examples:
 
 ## Installation and Usage
 
-### Headers
-
-| Header | Description | Requireness |
-| ------------- | ------------- | --------- |
-| Cloud-Id | Yandex Cloud cloud as default value for MCP tool's input field `cloud_id` | Optional |
-| Folder-Id | Yandex Cloud folder as default value for MCP tool's input field `folder_id` | Optional |
-| Authorization | Yandex Cloud IAM Token for Streamable HTTP authorization | Required for Streamable HTTP |
-
 ### Configuration
 
 To start working with Yandex Cloud Toolkit MCP Server, you have to update your assistant's configuration (e.g. Cline, Roo Code or Claude Desktop) by adding `yandex-cloud-toolkit` server.
@@ -48,9 +40,16 @@ There are two available ways:
 
 - Roles. Account to perform operations with this MCP Server must have the necessary roles (e.g., `editor` or `compute.admin`).
 - Node.js 18.0.0 or higher
-- [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart) (`yc`) installed with configured user profile
+- (Optional) [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart) (`yc`) - required only when using CLI authentication
 
 > See the [package documentation](https://www.npmjs.com/package/@yandex-cloud/mcp) for more details.
+
+**Authentication Options:**
+
+Choose one of the following:
+
+- **OAuth (recommended)**: Use `-S <user or service account ID>` or `-u <email>` for browser-based authentication
+- **CLI**: Use `-p <profile>` to authenticate via Yandex Cloud CLI (requires CLI installation)
 
 **Configuration:**
 
@@ -63,7 +62,7 @@ There are two available ways:
       "args": [
         "-y", "@yandex-cloud/mcp",
         "-s", "toolkit",
-        "-p", "<CLI profile (optional)>",
+        "-S", "<User ID>",
         "-H", "Cloud-Id:<Cloud ID (optional)>",
         "-H", "Folder-Id:<Folder ID (optional)>"
       ]
@@ -101,6 +100,14 @@ There are two available ways:
   }
 }
 ```
+
+### Headers
+
+| Header | Description | Requireness |
+| ------------- | ------------- | --------- |
+| Cloud-Id | Yandex Cloud cloud as default value for MCP tool's input field `cloud_id` | Optional |
+| Folder-Id | Yandex Cloud folder as default value for MCP tool's input field `folder_id` | Optional |
+| Authorization | Yandex Cloud IAM Token for Streamable HTTP authorization | Required for Streamable HTTP |
 
 ## Tools
 

@@ -10,10 +10,10 @@ It allows searching various types of metadata: tables, views and queries, as wel
   - [Table of Contents](#table-of-contents)
   - [Use Cases](#use-cases)
   - [Installation and Usage](#installation-and-usage)
-    - [Headers](#headers)
     - [Configuration](#configuration)
       - [NPM Client (recommended)](#npm-client-recommended)
       - [Streamable HTTP](#streamable-http)
+    - [Headers](#headers)
   - [Tools](#tools)
 
 ## Use Cases
@@ -31,12 +31,6 @@ Prompts examples:
 
 ## Installation and Usage
 
-### Headers
-
-| Header | Description | Requireness |
-| ------------- | ------------- | --------- |
-| Authorization | Yandex Cloud IAM Token for Streamable HTTP authorization | Required for Streamable HTTP |
-
 ### Configuration
 
 To start working with Yandex Cloud Data Catalog MCP Server, you have to update your assistant's configuration (for example, Cline, Roo Code or Claude Desktop) by adding the `yandex-cloud-data-catalog` server.
@@ -49,9 +43,16 @@ There are two available ways:
 
 - Roles. Account to perform operations with this MCP Server must have the [required roles](https://yandex.cloud/en/docs/metadata-hub/security/data-catalog-roles) (e.g., `data-catalog.viewer`).
 - Node.js 18.0.0 or higher
-- [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart) (`yc`) installed with configured user profile
+- (Optional) [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart) (`yc`) - required only when using CLI authentication
 
 > See the [package documentation](https://www.npmjs.com/package/@yandex-cloud/mcp) for more details.
+
+**Authentication Options:**
+
+Choose one of the following:
+
+- **OAuth (recommended)**: Use `-S <user or service account ID>` or `-u <email>` for browser-based authentication
+- **CLI**: Use `-p <profile>` to authenticate via Yandex Cloud CLI (requires CLI installation)
 
 **Configuration:**
 
@@ -64,7 +65,7 @@ There are two available ways:
       "args": [
         "-y", "@yandex-cloud/mcp",
         "-s", "datacatalog-consumer",
-        "-p", "<CLI profile (optional)>"
+        "-S", "<User ID>"
       ]
     }
   }
@@ -98,6 +99,12 @@ There are two available ways:
   }
 }
 ```
+
+### Headers
+
+| Header | Description | Requireness |
+| ------------- | ------------- | --------- |
+| Authorization | Yandex Cloud IAM Token for Streamable HTTP authorization | Required for Streamable HTTP |
 
 ## Tools
 

@@ -47,11 +47,11 @@ There are two available ways:
 
 #### NPM Client
 
+> See the [npm package documentation](https://www.npmjs.com/package/@yandex-cloud/mcp) for more details.
+
 **Prerequisites:**
 
 - Node.js 18.0.0 or higher
-
-> See the [package documentation](https://www.npmjs.com/package/@yandex-cloud/mcp) for more details.
 
 **Configuration:**
 

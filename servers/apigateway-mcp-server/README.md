@@ -11,8 +11,8 @@ MCP server for managing Yandex Cloud API Gateway - create, configure, and manage
   - [Use Cases](#use-cases)
   - [Installation and Usage](#installation-and-usage)
     - [Configuration](#configuration)
-      - [NPM Client (recommended)](#npm-client-recommended)
-      - [Streamable HTTP](#streamable-http)
+      - [NPM Client (recommended)](#1-npm-client-recommended)
+      - [Streamable HTTP](#2-streamable-http)
     - [Headers](#headers)
   - [Tools](#tools)
 
@@ -37,7 +37,11 @@ To start working with Yandex Cloud API Gateway MCP Server, you have to update yo
 
 There are two available ways:
 
-#### NPM Client (recommended)
+#### 1. NPM Client (recommended)
+
+Provides authentication via OAuth (browser-based, default) or Yandex Cloud CLI (`yc`).
+
+> See the [npm package documentation](https://www.npmjs.com/package/@yandex-cloud/mcp) for more details.
 
 **Prerequisites:**
 
@@ -45,13 +49,10 @@ There are two available ways:
 - Node.js 18.0.0 or higher
 - (Optional) [Yandex Cloud CLI](https://yandex.cloud/en/docs/cli/quickstart) (`yc`) - required only when using CLI authentication
 
-> See the [package documentation](https://www.npmjs.com/package/@yandex-cloud/mcp) for more details.
-
 **Authentication Options:**
 
-Choose one of the following:
-
-- **OAuth (recommended)**: Use `-S <user or service account ID>` or `-u <email>` for browser-based authentication
+- **OAuth (default, recommended)**: Run the package without authentication flags. Browser-based authentication is used automatically.
+- **OAuth with explicit account selection**: Use `-S <user or service account ID>` or `-u <email>`
 - **CLI**: Use `-p <profile>` to authenticate via Yandex Cloud CLI (requires CLI installation)
 
 **Configuration:**
@@ -65,7 +66,6 @@ Choose one of the following:
       "args": [
         "-y", "@yandex-cloud/mcp",
         "-s", "apigateway",
-        "-S", "<User ID>",
         "-H", "Folder-Id:<Folder ID (optional)>"
       ]
     }
@@ -73,7 +73,7 @@ Choose one of the following:
 }
 ```
 
-#### Streamable HTTP
+#### 2. Streamable HTTP
 
 **Prerequisites:**
 
